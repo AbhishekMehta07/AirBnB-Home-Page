@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airbnb_Fake</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 5rem;
+            border-bottom: 1px solid #ebebeb;
+            position: sticky;
+            top: 0;
+            background-color: white;
+            z-index: 100;
+        }
+
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: #ff385c;
+        }
+
+        .logo img {
+            height: 72px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #222;
+            font-weight: 500;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .host-button {
+            padding: 0.8rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #dddddd;
+            border-radius: 40px;
+            padding: 0.5rem;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .search-item {
+            padding: 0 1rem;
+            border-right: 1px solid #dddddd;
+        }
+
+        .search-item:last-child {
+            border: none;
+        }
+
+        .search-item label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .search-item input {
+            border: none;
+            outline: none;
+            font-size: 0.9rem;
+            color: #717171;
+        }
+
+        .search-button {
+            background: #ff385c;
+            color: white;
+            padding: 0.8rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Categories Styles */
+        .categories {
+            display: flex;
+            gap: 2rem;
+            padding: 1rem 5rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .category {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            min-width: 60px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 1rem;
+        }
+
+        .category:hover {
+            opacity: 1;
+            border-bottom-color: #dddddd;
+        }
+
+        .category.active {
+            opacity: 1;
+            border-bottom-color: black;
+        }
+
+        .category img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Listings Grid */
+        .listings {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            padding: 2rem 5rem;
+        }
+
+        .listing {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .listing img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .listing-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .listing-info {
+            padding: 0.8rem 0;
+        }
+
+        .listing-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .listing-host {
+            color: #717171;
+            margin-bottom: 0.3rem;
+        }
+
+        .listing-price {
+            font-weight: 600;
+        }
+
+        .listing-price span {
+            font-weight: normal;
+            color: #717171;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-top">
+            <div class="logo">
+                <img src="https://dwglogo.com/wp-content/uploads/2015/12/Airbnb-Logo.png" alt="Airbnb">
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active">Stays</a>
+                <a href="#">Experiences</a>
+            </div>
+            <div class="nav-right">
+                <div class="host-button">Airbnb your home</div>
+                <i class="fas fa-globe"></i>
+                <div class="profile-menu">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </div>
+        <div class="search-bar">
+            <div class="search-item">
+                <label>Where</label>
+                <input type="text" placeholder="Search destinations">
+            </div>
+            <div class="search-item">
+                <label>Check in</label>
+                <input type="text" placeholder="Add dates">
+            </div>
+            <div class="search-item">
+                <label>Check out</label>
+                <input type="text" placeholder="Add dates">
+            </div>
+            <div class="search-item">
+                <label>Who</label>
+                <input type="text" placeholder="Add guests">
+            </div>
+            <div class="search-button">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="categories">
+        <div class="category active">
+            <img src="https://a0.muscache.com/im/pictures/mediaverse/category_icon/original/3e5243c8-4d15-4c6b-97e3-7ba2bb7bb880.png" alt="Icons">
+            <span>Icons</span>
+        </div>
+        <div class="category">
+            <img src="https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg" alt="Amazing views">
+            <span>Amazing views</span>
+        </div>
+        <div class="category">
+            <img src="https://a0.muscache.com/pictures/aaa02c2d-9f0d-4c41-878a-68c12ec6c6bd.jpg" alt="Farms">
+            <span>Farms</span>
+        </div>
+        <div class="category">
+            <img src="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg" alt="Amazing pools">
+            <span>Amazing pools</span>
+        </div>
+        <!-- Add more categories as shown in the image -->
+    </div>
+
+    <div class="listings">
+        <div class="listing">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEzMTA4OTQ5ODA0MDcwMTE4Mw%3D%3D/original/a766e0e9-1e6f-4b88-b8d5-ce12375c6de8.png?im_w=1440&im_q=highq" alt="Prince's Purple Rain house">
+            <div class="listing-badge">Live</div>
+            <div class="listing-info">
+                <div class="listing-title">Stay in Prince's Purple Rain house</div>
+                <div class="listing-host">Hosted by Wendy And Lisa</div>
+                <div class="listing-price">₹565 <span>per guest</span></div>
+            </div>
+        </div>
+        <div class="listing">
+            <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEyNjMyMzc5Mzc2MTc3OTEzMg%3D%3D/original/749262fe-943e-4135-8c9a-bb0e608a83c5.jpeg?im_w=1440&im_q=highq" alt="Living Room Session">
+            <div class="listing-badge">Live</div>
+            <div class="listing-info">
+                <div class="listing-title">Join the Living Room Session with Doja Cat</div>
+                <div class="listing-host">Hosted by Doja Cat</div>
+                <div class="listing-price">₹6,468 <span>per guest</span></div>
+            </div>
+        </div>
+        <!-- Add more listings as shown in the image -->
+    </div>
+</body>
+</html>
