@@ -8,14 +8,10 @@ Features
 - Responsive design for desktop and mobile
 - Navigation bar with search and login options
 - Beautiful layout mimicking the AirBnB homepage
-- Well-structured HTML, CSS, and JavaScript
 
 Technologies Used
 -----------------
 - HTML5
-- CSS3
-- JavaScript (Optional for interactivity)
-
 Installation & Usage
 --------------------
 1. Clone the repository:
